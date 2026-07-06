@@ -1,0 +1,114 @@
+/* استدعاءات Tailwind الأساسية عشان كلاسات الـ Login ولوحات التحكم تشتغل */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* الألوان المستوحاة من هوية Aqar House */
+  --text: #475569;          /* slate-600 */
+  --text-h: #2A434D;        /* الأزرق الداكن الأساسي للتطبيق */
+  --bg: #F8FAFC;            /* خلفية مريحة مائلة للبياض */
+  --border: #E2E8F0;        /* slate-200 */
+  --code-bg: #F1F5F9;
+  --accent: #FF8C42;        /* البرتقالي الأساسي للأزرار والاعتماد */
+  --accent-bg: rgba(255, 140, 66, 0.1);
+  --accent-border: rgba(255, 140, 66, 0.4);
+  --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+
+  /* الخطوط */
+  --sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --heading: system-ui, 'Segoe UI', sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  font: 16px/150% var(--sans);
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* دعم الوضع الداكن التلقائي (Dark Mode) بشكل مريح للعين */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #94A3B8;        /* slate-400 */
+    --text-h: #F8FAFC;      /* slate-50 */
+    --bg: #0F172A;          /* slate-900 */
+    --border: #1E293B;      /* slate-800 */
+    --code-bg: #1E293B;
+    --accent: #FFA45E;      /* برتقالي أفتح قليلاً للوضع الداكن */
+    --accent-bg: rgba(255, 164, 94, 0.15);
+    --accent-border: rgba(255, 164, 94, 0.5);
+    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  }
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  min-height: 100vh;
+}
+
+/* إلغاء الـ Width الثابت (1126px) ليعطي مساحة كاملة ومريحة لعرض جداول الإكسيل والعقارات */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* تحسينات الخطوط والعناوين لتناسب الهوية */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading);
+  color: var(--text-h);
+  font-weight: 700;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 2.5rem;
+  letter-spacing: -0.05em;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 1.75rem;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+@media (max-width: 768px) {
+  :root {
+    font-size: 15px;
+  }
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.4rem; }
+}
+
+/* أكواد برمجية ومعدادات */
+code {
+  font-family: var(--mono);
+  font-size: 0.875em;
+  padding: 0.2rem 0.4rem;
+  background: var(--code-bg);
+  border-radius: 6px;
+  color: var(--accent);
+}
+
+/* تحسين مظهر التمرير (Scrollbar) لجداول الرفع والعرض */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text);
+}
